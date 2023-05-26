@@ -91,9 +91,29 @@ bool DoubleLinkedList::deleteNode(int rollNo) {
 	if (search(rollNo, &previous, &current) == false)
 		return false;
 	if (previous != NULL)
-		previous->next = current->next; //step 3
+		previous->next = current->next; //step 2
+	if (previous != NULL)
+		previous->next == current->next;//step 3
 	else
 		START = current->next;
+
 	delete current; //step 4
 	return true;
+}
+
+bool DoubleLinkedList::listEmpty() {
+	return (START == NULL);
+}
+
+void DoubleLinkedList::traverse() {
+	if (listEmpty())
+		cout << "\nList is empty" << endl;
+	else {
+		cout << "\nRecords in ascending order of roll number are: " << endl;
+		Node* currentNode = START;
+		while (currentNode != NULL) {
+			cout << currentNode->noMhs << " " << currentNode->name << endl;
+			currentNode = currentNode->next;
+		}
+	}
 }
