@@ -5,7 +5,7 @@ using namespace std;
 class Node {
 public:
 	int noMhs;
-	string nama;
+	string name;
 	Node* next;
 	Node* prev;
 };
@@ -40,5 +40,17 @@ void DoubleLinkedList::addNode() {
 	newNode->noMhs = nim;  //step 2
 	newNode->name = nm; //step 2
 
-
+	/*insert a node in the beginning if a doubly - linked list*/
+	if (START == NULL || nim <= START->noMhs) {
+		if (START != NULL && nim == START->noMhs) {
+			cout << "\nDulicate number not allowed" << endl;
+			return;
+		}
+		newNode->next = START; //step3
+		if (START != NULL)
+			START->prev = newNode;  //step 4
+		newNode->prev = NULL;  //step 5
+		START = newNode; //step 6
+		return;
+	}
 }
